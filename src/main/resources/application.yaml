@@ -4,12 +4,27 @@ spring:
       enabled: true
       path: /testdb
   datasource:
-    driver-class-name: org.h2.Driver
-    jdbc-url: jdbc:h2:mem:testdb
-    username: test
-    passwored: test
+    hikari:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:~/test
+      username: admin
+      password: test
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
   security:
     user:
       name: admin
       password: test
       role: admin
+  logging:
+    level:
+      org:
+        hibernate:
+          SQL: debug
+          type:
+            descriptor:
+              sql: trace
