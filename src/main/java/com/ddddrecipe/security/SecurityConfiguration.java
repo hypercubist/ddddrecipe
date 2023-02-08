@@ -16,6 +16,9 @@ public class SecurityConfiguration {
                     .antMatchers("/testdb/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
+                .csrf().disable()
+                .headers().frameOptions().sameOrigin()
+                .and()
                 .httpBasic(Customizer.withDefaults());
 
         return http.build();
